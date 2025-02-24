@@ -1,0 +1,44 @@
+<section class="w-[90%] mx-auto my-10">
+  <h2 class="capitalize font-black text-3xl text-green-400 py-4">
+    Hi {{userOrder.user.name}}
+    <br>
+    <br>
+    Your Orders ... !
+  </h2>
+
+  <div class="relative overflow-x-auto bg-white shadow-md rounded-lg p-4">
+    <!-- <h2>{{userOrder.user.email}}</h2> -->
+    <table class="w-full text-sm text-left rtl:text-right text-gray-600">
+      <thead class="text-xs uppercase bg-gray-100">
+        
+        <tr>
+          <th scope="col" class="px-6 py-3">Cart Count</th>
+          <th scope="col" class="px-6 py-3">Product Image</th>
+          <th scope="col" class="px-6 py-3">Product Title</th>
+          <th scope="col" class="px-6 py-3">Total Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of cartItems; track $index) {
+        <tr class="border-b">
+          <td class="px-6 py-4">{{item.count}}</td>
+          <td class="px-6 py-4"><img [src]="item.product.imageCover" [alt]="item.product.title" class="w-[20%]"></td>
+          <td class="px-6 py-4 font-medium text-gray-900">{{item.product.title}}</td>
+          <td class="px-6 py-4 font-medium text-gray-900">{{item.price}}</td>
+        </tr>
+      }
+      <!-- } -->
+      </tbody>
+      <tfoot>
+        <tr class="bg-gray-200 font-bold">
+          <td class="px-6 py-4">Total Price:</td>
+          <td class="px-6 py-4"></td>
+          <td class="px-6 py-4"></td>
+
+          <td class="px-6 py-4">{{userOrder.totalOrderPrice}}</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+  <h2 class="capitalize font-black text-3xl text-green-400 py-4">Thanks Alot</h2>
+</section>

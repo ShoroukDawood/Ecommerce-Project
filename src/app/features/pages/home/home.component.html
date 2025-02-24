@@ -1,0 +1,49 @@
+<app-homepage-slider></app-homepage-slider>
+<section class="categories w-[90%] mx-auto">
+  <h2 class="capitalize font-black text-3xl text-green-400 capablities py-4">
+    Shop Popular Categories
+  </h2>
+  <app-categories-blocks></app-categories-blocks>
+  </section>
+
+
+<section class="product w-[90%] mx-auto">
+    <h3 class="capitalize font-black text-3xl text-green-400 capablities py-4">
+      Shop Popular Products
+    </h3>
+
+    <div class="flex flex-wrap my-4">
+      @for (product of displayedProducts; track $index) {
+      
+       <div class="md:w-1/4 p-3">
+        
+          <div class="bg-slate-100 rounded-xl p-3">
+            <div [routerLink]="['/productDetails',product._id]">
+              <img [src]="product.imageCover" [alt]="product.slug" class="w-full h-[300px] bg-gray-100">
+              <span class="text-green-400 capitalize font-medium">{{product.category.name }}</span>
+              <h2 class="font-semibold text-gray-900 my-3">{{ product.title.split(' ').splice(0,2).join(' ')}}</h2>
+              <div class="flex justify-between items-center">
+                <div>
+                    <i class="fa fa-star text-yellow-300"></i>
+                    <span>{{ product.ratingsAverage }}</span>
+                    <span class="text-slate-500">({{ product.ratingsQuantity }})</span>
+                </div>
+                <div class="salary">
+                    <span>{{ product.price }}</span>
+                </div>
+              </div>
+          </div>
+          <div>
+                 <button (click)="addProduct(product._id)" class="bg-green-500 font-bold w-full text-white rounded shadow py-3 mt-7">Add to Cart</button>
+          </div>
+          </div>
+      </div>
+ 
+      }
+    </div>
+    <div class="mx-auto flex my-5">
+      <a class="bg-green-400 rounded-xl p-5 text-center font-semibold mx-auto" href="/products/">For More Products</a>
+
+    </div>
+</section>
+ 
